@@ -8,6 +8,7 @@ import { ProductService } from './services/product.service';
 import { DIALOG_MESSAGE } from './models/dialog-message.model';
 import { MatDialogModalService } from './services/mat-dialog-modal.service';
 import { FictitiousLanguageTranslationService } from './services/fictitious-language-translation.service';
+import { UserConfig, USER_CONFIG_TOKEN } from './models/user-config.model';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +28,8 @@ export class AppComponent implements OnInit {
     @Inject('UserClass') private useClass: UseClass,
     @Inject(DIALOG_MESSAGE) private emptyDialogMessage: EmptyDialogMessage,
     @Inject(DIALOG_MESSAGE) private matDialogModalService: MatDialogModalService,
-    private fltService: FictitiousLanguageTranslationService
+    private fltService: FictitiousLanguageTranslationService,
+    @Inject(USER_CONFIG_TOKEN) private config: UserConfig
   ) {
   }
 
@@ -39,7 +41,9 @@ export class AppComponent implements OnInit {
 
     // console.log(this.matDialogModalService.showErrorMessage('test'))
 
-    this.fltService.elvish('Dat test')
+    // this.fltService.elvish('Dat test')
+
+    console.log(this.config)
 
   }
 }

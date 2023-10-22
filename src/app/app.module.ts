@@ -9,6 +9,7 @@ import { DIALOG_MESSAGE } from './models/dialog-message.model';
 import { EmptyDialogMessage } from './services/empty-dialog-message.service';
 import { FictitiousLanguageTranslationService } from './services/fictitious-language-translation.service';
 import { LanguageTranslationService } from './services/language-translation.service';
+import { defaultUserConfig, UserConfig, USER_CONFIG_TOKEN } from './models/user-config.model';
 
 
 @Injectable()
@@ -48,6 +49,15 @@ export class User {
     {
       provide: FictitiousLanguageTranslationService,
       useExisting: LanguageTranslationService
+    },
+    {
+      provide: 'defaultUserConfig',
+      useValue: defaultUserConfig
+    },
+    {
+      provide: USER_CONFIG_TOKEN,
+      useFactory: (config: UserConfig) => config.language === 'jp' ? '🇯🇵' : '🏁',
+      deps: ['defaultUserConfig']
     }
   ],
   bootstrap: [AppComponent]
