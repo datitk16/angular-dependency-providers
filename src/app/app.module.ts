@@ -5,6 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TOKEN, USER_VALUE } from './models/useValue.model';
+import { DIALOG_MESSAGE } from './models/dialog-message.model';
+import { EmptyDialogMessage } from './services/empty-dialog-message.service';
 
 
 @Injectable()
@@ -32,6 +34,10 @@ export class User {
     {
       provide: 'UserClass',
       useClass: UseClass
+    },
+    {
+      provide: DIALOG_MESSAGE,
+      useClass: EmptyDialogMessage
     },
   ],
   bootstrap: [AppComponent]

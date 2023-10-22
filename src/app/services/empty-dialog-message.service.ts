@@ -5,7 +5,9 @@ import { Injectable } from '@angular/core';
 export class EmptyDialogMessage implements IDialogMessage {
   showInfoMessage(message: string, onOkHandler?: () => void): void { }
 
-  showErrorMessage(message: string, onOkHandler?: () => void): void { }
+  showErrorMessage(message: string, onOkHandler?: () => void): void {
+    console.log(message)
+  }
 
   showConfirmMessage(
     msg: string,
